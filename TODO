@@ -1,0 +1,34 @@
+General Todo:
+	- Create site news/blog app
+	- Create forums app
+	- Change the admin css
+	- Setup templates and static files
+
+Tracker App Todo:	
+	- Tracker should use django's create_user() and current User model should relate to that entry	
+		https://docs.djangoproject.com/en/1.8/topics/auth/default/
+		https://docs.djangoproject.com/en/1.8/topics/auth/customizing/
+
+	- Add selflinks to tracker models to make admin browsing easier	
+	
+	- Create index
+		- HTML
+		- Django View
+		
+	- Create registration
+		- HTML
+		- Django View
+
+	- Create profile page
+		- HTML
+		- Django View
+
+	- Create torrent list
+		- HTML
+		- Django View
+
+	- Torrent searching
+	- Create torrent uploading
+	- Let users add tags to current torrents
+	- Add client whitelist model
+	- Track which clients are used by a User
