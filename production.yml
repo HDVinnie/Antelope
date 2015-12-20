@@ -6,8 +6,7 @@ django:
   links:
     - postgres:postgres
     - redis:redis
-  env_file: .env
-  command: /usr/local/bin/gunicorn antelope.wsgi:application -w 4 -b :8000
+  env_file: .env 
 
 nginx:
   restart: always

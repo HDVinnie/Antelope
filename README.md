@@ -17,6 +17,8 @@ does not need a forum or a news blog, you can simply disable them.
 There is still a lot of work to be done. Please see the TODO to see if you can
 help.
 
+License is still being decided upon
+
 ###Developing
 
 Docker, docker-compose and docker-machine is used for the development of 
@@ -24,7 +26,7 @@ Antelope.
 
 ###Code Style
 
-Antelope tries to adhere to [Google's Python Code Style](https://google.github.io/styleguide/pyguide.html). 
+Antelope tries to adhere to [Django's Code Style](https://docs.djangoproject.com/en/1.8/internals/contributing/writing-code/coding-style/``). 
 Please follow this style when submitting pull requests. Likewise if you see any
 code in the repo which does not conform to those guidelines, please submit a 
 fix.

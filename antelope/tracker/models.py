@@ -1,6 +1,6 @@
 from django.db import models
-from .MemberLevels import MemberLevels
-from .ParanoiaLevels import ParanoiaLevels
+from .memberlevels import MemberLevels
+from .paranoialevels import ParanoiaLevels
 
 class User(models.Model):
     username = models.CharField(max_length=20)
