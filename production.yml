@@ -6,7 +6,10 @@ django:
   links:
     - postgres:postgres
     - redis:redis
+  environment:
+    - DJANGO_SETTINGS_MODULE=antelope.settings.production
   env_file: .env 
+  command: /usr/local/bin/gunicorn -c gunicorn/production.py --chdir antelope antelope.wsgi:application --reload
 
 nginx:
   restart: always

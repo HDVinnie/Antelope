@@ -8,7 +8,10 @@ django:
     - redis:redis
   volumes:
     - /usr/src/app/static
+  environment:
+    - DJANGO_SETTINGS_MODULE=antelope.settings.testing
   env_file: .env
+  command: /usr/local/bin/gunicorn -c gunicorn/testing.py --chdir antelope antelope.wsgi:application --reload
 
 nginx:
   restart: always
