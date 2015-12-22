@@ -17,8 +17,6 @@ does not need a forum or a news blog, you can simply disable them.
 There is still a lot of work to be done. Please see the TODO to see if you can
 help.
 
-License is still being decided upon
-
 ###Developing
 
 Docker, docker-compose and docker-machine is used for the development of 
