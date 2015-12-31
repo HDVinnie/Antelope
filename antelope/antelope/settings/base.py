@@ -24,6 +24,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'accounts.AntelopeUser'
 
 # Application definition
 
@@ -34,7 +35,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tracker',
+    'accounts',
 )
 
 MIDDLEWARE_CLASSES = (

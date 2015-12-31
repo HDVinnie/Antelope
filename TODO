@@ -1,16 +1,7 @@
-General Todo:
-	- Create site news/blog app
-	- Create forums app
-	- Change the admin css
-	- Setup templates and static files
+Accounts Todo:
+	- Add selflink to user model to make admin browsing easier
 
 Tracker App Todo:	
-	- Tracker should use django's create_user() and current User model should relate to that entry	
-		https://docs.djangoproject.com/en/1.8/topics/auth/default/
-		https://docs.djangoproject.com/en/1.8/topics/auth/customizing/
-
-	- Add selflinks to tracker models to make admin browsing easier	
-	
 	- Create index
 		- HTML
 		- Django View
