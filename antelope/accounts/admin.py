@@ -9,6 +9,7 @@ from .models import AntelopeUser, UserLogin
 class UserLoginInline(admin.TabularInline):
     model = UserLogin
     extra = 0
+    readonly_fields = ('login',)
 
 class UserCreationForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
@@ -65,8 +66,9 @@ class UserAdmin(BaseUserAdmin):
 
     list_display = ('username', 'email', 'passkey')
     list_filter = ('is_admin', 'is_active', 'can_invite',)
+    readonly_fields = ('joined_date',)
     fieldsets = (
-        (None, {'fields': ('username', 'email', 'passkey', 'invites', 'password',)}), 
+        (None, {'fields': ('username', 'email', 'passkey', 'joined_date', 'invites', 'password',)}), 
         ('Permissions', {'fields': ('is_active', 'can_invite', 'is_admin',)}),
         ('Torrents', {'fields': ('torrents_uploaded', 'torrents_downloaded', 'uploaded', 'downloaded',)}),
     )
@@ -78,13 +80,13 @@ class UserAdmin(BaseUserAdmin):
     )
     search_fields = ('username', 'email', 'passkey',)
     ordering = ('username',)
-    filter_horizontal = ()
+    filter_horizontal = () 
 
     inlines = [UserLoginInline]
 
 class UserLoginAdmin(admin.ModelAdmin):
     list_display = ('user', 'login', 'ip')
-    search_fields = ('user', 'ip',' login')
+    search_fields = ('user', 'ip',' login') 
 
 admin.site.register(AntelopeUser, UserAdmin)
 admin.site.register(UserLogin, UserLoginAdmin)
