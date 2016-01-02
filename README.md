@@ -18,6 +18,11 @@ does not need a forum or a news blog for example, you can simply disable them.
 There is still a lot of work to be done. Please see the TODO to see if you can
 help.
 
+###Documentation
+
+All documentation is in the docs directory and can also be found here: 
+https://astonex.github.io/Antelope
+
 ###Developing
 
 To get started with developing Antelope, please see the instructions here:
@@ -25,7 +30,7 @@ http://astonex.github.io/Antelope/installation.html
 
 ###Code Style
 
-Antelope tries to adhere to [Django's Code Style](https://docs.djangoproject.com/en/1.8/internals/contributing/writing-code/coding-style/``). 
+Antelope tries to adhere to [Django's Code Style](https://docs.djangoproject.com/en/1.8/internals/contributing/writing-code/coding-style/). 
 Please follow this style when submitting pull requests. Likewise if you see any
 code in the repo which does not conform to those guidelines, please submit a 
 fix.
