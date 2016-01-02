@@ -20,8 +20,8 @@ help.
 
 ###Developing
 
-Docker, docker-compose and docker-machine is used for the development of 
-Antelope.
+To get started with developing Antelope, please see the instructions here:
+http://astonex.github.io/Antelope/installation.html
 
 ###Code Style
 
