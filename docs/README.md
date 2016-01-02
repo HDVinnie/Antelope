@@ -15,6 +15,6 @@ gh-pages branch. To do this, simply change
 
 to
 
-`BUILDDIR = \_build`
+`BUILDDIR = _build`
 
 Then you can simply run `make html` to generate your html docs.
