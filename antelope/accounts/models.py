@@ -7,6 +7,7 @@ from django.contrib.auth.models import (
 from random import choice
 from string import ascii_lowercase, digits
 
+
 class AntelopeUserManager(BaseUserManager):
     def create_user(self, username, password, email):
         if not username:
@@ -20,7 +21,7 @@ class AntelopeUserManager(BaseUserManager):
 
         user = self.model(
             username=username,
-            email=self.normalize_email(email), 
+            email=self.normalize_email(email),
             passkey=''.join(choice(ascii_lowercase + digits) for _ in range(32))
         )
 
@@ -31,8 +32,8 @@ class AntelopeUserManager(BaseUserManager):
 
     def create_superuser(self, username, email, password):
         user = self.create_user(
-            username=username, 
-            password=password, 
+            username=username,
+            password=password,
             email=email
         )
 
@@ -41,12 +42,13 @@ class AntelopeUserManager(BaseUserManager):
 
         return user
 
+
 class AntelopeUser(AbstractBaseUser):
     username = models.CharField(max_length=20, unique=True)
     email = models.EmailField(max_length=255)
     passkey = models.CharField(max_length=32)
     joined_date = models.DateField(auto_now_add=True)
-    
+
     uploaded = models.BigIntegerField(default=0)
     downloaded = models.BigIntegerField(default=0)
     torrents_uploaded = models.PositiveIntegerField(default=0)
@@ -84,6 +86,7 @@ class AntelopeUser(AbstractBaseUser):
     def is_staff(self):
         # TODO : Update this when member classes are added
         return self.is_admin
+
 
 class UserLogin(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
