@@ -7,3 +7,6 @@ Contents:
    :maxdepth: 2
 
    installation
+   configuration
+   architecture
+   deployment

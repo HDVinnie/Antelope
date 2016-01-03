@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuring Deployment &mdash; Antelope 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Antelope 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Architecture" href="architecture.html"/>
+        <link rel="prev" title="Installation" href="installation.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Antelope
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Configuring Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#docker">Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gunicorn">Gunicorn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#django">Django</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nginx">NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#antelope">Antelope</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Antelope</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Configuring Deployment</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/configuration.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuring-deployment">
+<h1>Configuring Deployment<a class="headerlink" href="#configuring-deployment" title="Permalink to this headline">¶</a></h1>
+<p>Antelope is separated into testing and production settings throughout, although
+it may suit your needs to add more configurations such as staging and local.
+All path files are given relative to the root of the Antelope directory.</p>
+<div class="section" id="docker">
+<h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h2>
+<p>The configuration files for Docker are found in the root, and there is a
+Dockerfile in <cite>nginx/</cite>. The two main files of concern are the docker-compose
+files found in the root: <cite>docker-compose.yml</cite>, and <cite>production.yml</cite>. These files
+are responsible for configuring your containers, setting up environment vars
+and executing some commands. A good reference for these files is found <a class="reference external" href="https://docs.docker.com/compose/compose-file/">here</a>.</p>
+</div>
+<div class="section" id="gunicorn">
+<h2>Gunicorn<a class="headerlink" href="#gunicorn" title="Permalink to this headline">¶</a></h2>
+<p>The configuration files for Gunicorn can be found in <cite>gunicorn/</cite>. Some sane
+defaults are provided but you can read more on how to configure Gunicorn
+<a class="reference external" href="http://docs.gunicorn.org/en/19.4.3/settings.html">here</a>.</p>
+<p>The launching of Gunicorn happens in the docker-compose file and it is there
+that the appropriate Gunicorn config file is chosen.</p>
+</div>
+<div class="section" id="django">
+<h2>Django<a class="headerlink" href="#django" title="Permalink to this headline">¶</a></h2>
+<p>The main configuration files for Django can be found in
+<cite>antelope/antelope/settings/</cite>. The Django settings are split into a base file,
+<cite>base.py</cite>, and other configurations which build off the base. Something you
+may wish to do is to create a local config where you can include your personal
+favourite settings that you want to use but don&#8217;t want to force others to as
+well. This can be done easily by creating a <cite>local.py</cite> file with the following
+example code. Remember to not track this file, and to change the Docker compose
+file to use your local settings</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># A personal settings file</span>
+<span class="kn">from</span> <span class="nn">.testing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">INSTALLED_APPS</span> <span class="o">+=</span> <span class="p">(</span><span class="s">&quot;debug_toolbar&quot;</span><span class="p">,</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>The Django settings file is chosen in the docker-compose file by setting the
+<cite>DJANGO_SETTINGS_MODULE</cite> environment variable.</p>
+<p>You will also find in in <cite>antelope/antelope/wsgi.py</cite> a way to set a django
+settings fallback should the above environment variable not be set for any
+reason. The default fallback is to use production settings.</p>
+</div>
+<div class="section" id="nginx">
+<h2>NGINX<a class="headerlink" href="#nginx" title="Permalink to this headline">¶</a></h2>
+<p>The configuration files for NGINX can be found in <cite>nginx/</cite>. At the moment there
+is only a server configuration file that is found in <cite>nginx/sites-enabled</cite>.
+This config proxies connections to Gunicorn and serves your static files. From
+here you will also want to configure any SSL etc.</p>
+<p>You may also want a custom nginx.conf which can be easily done by placing one
+in <cite>nginx/</cite> and then editing the Dockerfile to include:</p>
+<div class="highlight-python"><div class="highlight"><pre>COPY nginx.conf /etc/nginx/nginx.conf
+</pre></div>
+</div>
+</div>
+<div class="section" id="antelope">
+<h2>Antelope<a class="headerlink" href="#antelope" title="Permalink to this headline">¶</a></h2>
+<p>To be written once Antelope is more developed. It is planned for you to be able
+to change branding, settings (such as open/private), etc. from just one config
+file which will be documented here when ready.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="architecture.html" class="btn btn-neutral float-right" title="Architecture" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="installation.html" class="btn btn-neutral" title="Installation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Mark Edward Winter.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
